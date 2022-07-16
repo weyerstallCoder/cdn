@@ -1,1 +1,0 @@
-<?php the_sub_field( 'text_sidebar_text' ); ?>

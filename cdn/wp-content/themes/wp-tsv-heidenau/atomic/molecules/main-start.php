@@ -1,1 +1,0 @@
-<main class="main" role="main">
