@@ -1,0 +1,95 @@
+$app-primary-color:#173691;
+$app-primary-color-25:#2e4a9c;
+$app-primary-color-50:#455ea7;
+$app-primary-color-75:#5d72b2;
+$app-primary-color-85:#8b9bc8;
+$app-primary-color-90:#A2AED3;
+$app-primary-color-95:#B9C2DE;
+$app-primary-darken-color:#102665;
+$app-secondary-color:#7FB7EC;
+$app-highlight-color:#FFCD44;
+$app-light-color: #F4F4F4;
+$app-border-color: #E6E6E6;
+$app-text-color: #5E5D5D;
+$app-text-light-color: #8C8B8B;
+
+:root{
+  // colors
+  --app-primary-color:#{$app-primary-color};
+  --app-primary-darken-color:#{$app-primary-darken-color};
+  --app-secondary-color: #{$app-secondary-color};
+  --app-highlight-color: #{$app-highlight-color};
+  --app-border-color: #{$app-border-color};
+  --app-text-color:#{$app-text-color};
+  --app-text-light-color:#{$app-text-light-color};
+
+  //font
+  --app-title-size-2xlarge: 5em;
+  --app-title-size-xxlarge: 4.375em;
+  --app-title-size-xlarge: 3.125em;
+  --app-title-size-large: 2.813em;
+  --app-title-size-slarge: 1.750em;
+  --app-title-size-medium: 1.875em;
+  --app-title-size-mini: 0.625em;
+  --app-title-size-small: 0.875em;
+
+  //spacings
+  --app-p-space: 1.875rem; //30px
+  --app-default-space: 4.750rem;
+  --app-single-content-space-x: 7.5rem;
+  
+  //sizes
+  --app-card-md-image-size: 180px;
+  --app-card-square: 64px;
+  --app-button-circular: 54px;
+  --app-container: 1600px;
+  --app-container-single: 1080px;
+  --app-window: 1920px;
+  
+  //overrides
+  --bs-primary-rgb: 23, 54, 145;
+  --bs-primary: #{$app-primary-color};
+  --bs-secondary-rgb: 127, 183, 236;
+  --bs-secondary: #{$app-secondary-color};
+  --bs-light-rgb:244, 244, 244;
+  --bs-light: #{$app-light-color};
+  --bs-dark-rgb: 16, 38, 101;
+  --bs-dark: #{$app-primary-darken-color};
+  --swiper-theme-color: #{$app-highlight-color};
+  --swiper-pagination-color: #{$app-highlight-color};
+  --swiper-navigation-color: #fff;
+  --cd-color-event-1: #{$app-primary-color} !important;
+  --cd-color-event-2: #{$app-primary-color-25} !important;
+  --cd-color-event-3: #{$app-primary-color-50} !important;
+  --cd-color-event-4: #{$app-primary-color-75} !important;
+  --cd-color-event-5: #{$app-primary-color-85} !important;
+  --cd-color-event-6: #{$app-primary-color-90} !important;
+  --cd-color-event-7: #{$app-primary-color-95} !important;
+  --schedule-rows-height: 80px !important;
+  --font-primary: 'Gilroy', Verdana, Arial, Helvetica, sans-serif !important;
+}
+
+.border-primary{
+  border-color: $app-primary-color !important;
+}
+.border-secondary{
+  border-color: $app-secondary-color !important;
+}
+.border-light{
+  border-color: $app-border-color !important;
+}
+@for $i from 1 through 4 {
+  $classPercentName: calc(25 * $i);
+  $valueFloat: calc(calc(25 * $i) / 100);
+  .border-white-#{$classPercentName}{
+    border-color: rgba(255,255,255,$valueFloat) !important;
+  }
+}
+
+@for $i from 1 through 10 {
+  $classPercentName: calc(10 * $i);
+  $valueFloat: calc(calc(10 * $i) / 100);
+  .bg-white-#{$classPercentName}{
+    background-color: rgba(255,255,255,$valueFloat);
+  }
+}

@@ -1,0 +1,324 @@
+/* result & reports
+-------------------------------------------------------------*/
+.result-teams{
+  --app-result-team: 10rem;
+  .col-result-teams{
+    width: var(--app-result-team);
+  }
+}
+
+/* accordion
+-------------------------------------------------------------*/
+.accordion-body{
+  p{
+    margin-bottom: calc(var(--app-p-space) / 2);
+  }
+  p:last-child{
+    margin-bottom: 0px;
+  }
+}
+
+/* shedule list
+-------------------------------------------------------------*/
+@for $i from 5 through 10 {
+  .cd-schedule__event [data-event="event-#{$i}"], 
+  .cd-schedule-modal[data-event="event-#{$i}"] .cd-schedule-modal__header-bg{
+    background: var(--cd-color-event-#{$i});
+  }
+}
+
+//bootstrap modal override
+.modal-backdrop.show{
+  opacity: 0.75;
+}
+
+// modal icons
+#sheduleModalHallDirIcons{
+  i{
+    vertical-align: top;
+  }
+}
+
+
+/* shedule tabs
+-------------------------------------------------------------*/
+.tab-shedule{
+  width: 400px;
+  min-height: 409px;
+  z-index: 1;
+}
+#nav-tab-shedule{
+  button{
+    &:not(.active){
+      background-color: var(--app-primary-color);
+      color: transparentize(#fff, 0.5);
+    }
+    &.active{
+      background-color: #fff;
+      color: var(--app-primary-color);
+    }
+  }
+}
+
+/* member - card horizontal
+-------------------------------------------------------------*/
+:root{
+  --app-card-member-size: 240px;
+}
+.card-member-max-size{
+  .card-body{
+    min-height: var(--app-card-member-size);
+  }
+}
+.card-roaster-hoody{
+  --app-trikro-scale: 95%;
+  .card-footer{
+    margin-top: -40px;
+  }
+}
+
+/* gallery
+-------------------------------------------------------------*/
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3rem !important;
+  &.gallery-columns-4{
+    .gallery-item{
+      width: 25% !important;
+    }
+  }
+  .gallery-item{
+    margin: 0;
+    float: none !important;
+    flex: 0 0 auto;
+    text-align: unset !important;
+    padding-left: 0.313rem;
+    padding-right: 0.313rem;
+    a{
+      --bs-aspect-ratio: 100%;
+      width: 100%;
+      position: relative;
+      &:before{
+        display: block;
+        padding-top: var(--bs-aspect-ratio);
+        content: '';
+      }
+      >* {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      >img{
+        object-fit: cover;
+        border: 0px !important;
+      }
+    }
+  }
+  .gallery-caption{
+    display: none !important;
+  }
+}
+
+/* single page
+-------------------------------------------------------------*/
+:root{
+  --app-single-card-overlay-size: 525px;
+}
+.main-single{
+  --app-title-size-medium: 1.75em;
+  h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1{
+    margin-bottom: 1.25rem;
+  }
+  ul,ol{
+    margin-top: calc(var(--app-p-space) / -2);
+    margin-bottom: var(--app-p-space);
+  }
+  .card-img{
+    height: var(--app-single-card-overlay-size);
+  }
+  .fg-half-offset-x{
+    margin-left: calc(var(--app-single-content-space-x) / -3);
+    margin-right: calc(var(--app-single-content-space-x) / -3);
+    figcaption{
+      padding-left: calc(var(--app-single-content-space-x) / 3);
+      padding-right: calc(var(--app-single-content-space-x) / 3);
+    }
+  }
+  .blockquote-comment{
+    margin-left: calc(var(--app-single-content-space-x) / -6);
+    margin-right: calc(var(--app-single-content-space-x) / -6);
+  }
+}
+
+/* allianz cup hero
+-------------------------------------------------------------*/
+.allianz-cup-hero{
+  >span{
+    background-position: right center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+  }
+}
+
+/* banner allianz
+-------------------------------------------------------------*/
+.banner-allianz{
+  svg{
+    max-width: 175px;
+    height: auto;
+  }
+}
+
+
+/* rounded share
+-------------------------------------------------------------*/
+:root{
+  --app-button-rounded-share: 34px;
+}
+.nav-share{
+  i{
+    width: var(--app-button-rounded-share);
+    height: var(--app-button-rounded-share);
+  }
+}
+
+/* blockquote comment
+-------------------------------------------------------------*/
+.blockquote-comment{
+  >p{
+    margin: 0px;
+  }
+  .blockquote-footer{
+    &:before{
+      content: '';
+    }
+  }
+}
+
+
+/* [swiper.js]
+-------------------------------------------------------------*/
+:root{
+  --app-card-slider-size: 350px;
+  --app-card-slider-height: auto;
+  --app-card-slider-pagination-size: 205px;
+  --app-card-slider-offset: calc(calc(var(--app-window) - calc(var(--app-container) - 1.5rem)) / 2);
+}
+
+// defaults
+.js-card-swiper{
+  --swiper-navigation-size: 18px;
+  &.swiper-horizontal>.swiper-pagination-progressbar{
+    top: auto;
+    bottom: 0;
+  }
+  &.card-swiper-dark{
+    .swiper-pagination-progressbar{
+      background: rgba(255,255,255,0.2);
+    }
+  }
+  &.card-swiper-light{
+    --swiper-navigation-color:#{$app-primary-color};
+    .swiper-pagination-progressbar{
+      background: rgba(0,0,0,0.2);
+    }
+    .swiper-fraction-current,
+    .swiper-fraction-total{
+      color: var(--app-primary-color);
+    }
+  }
+  .swiper-pagination-wrap{
+    left: var(--app-card-slider-offset);
+    .swiper-button-prev,
+    .swiper-button-next{
+      right: auto;
+      left: auto;
+      margin-top: 0;
+    }
+    .swiper-pagination-progressbar{
+      width: var(--app-card-slider-pagination-size);
+      min-width: var(--app-card-slider-pagination-size);
+    }
+  }
+}
+
+// card slides
+.swiper-slide-card{
+  &.swiper-slide-card--xl{
+    --app-card-slider-size:700px;
+    --app-card-slider-height: 525px;
+    &:not(.swiper-slide-active){
+      opacity: 0.25;
+    }
+    &.swiper-slide-next{
+      opacity: 1;
+    }
+    .card{
+      height: var(--app-card-slider-height);
+      >img{
+        height: 100%;
+      }
+    }
+  }
+  &.swiper-slide{
+    width: var(--app-card-slider-size);
+    transition: padding-left .1s ease-in-out, width .1s ease-in-out, opacity .1s ease-in-out;
+  }
+  &.swiper-slide-active{
+    padding-left: var(--app-card-slider-offset);
+    width: calc(var(--app-card-slider-size) + var(--app-card-slider-offset));
+  }
+}
+
+/* trikot image roaster
+-------------------------------------------------------------*/
+:root{
+  --app-trikot-size: 250px;
+  --app-trikro-scale: 140%;
+  --app-trikot-rounded: 48px;
+}
+.card-image-trikot{
+  height: var(--app-trikot-size);
+  &.card-image-trikot--price{
+    --app-trikro-scale: 105%;
+  }
+  &.card-image-trikot--secondary:after{
+    background: rgb(127, 183, 236);
+    background: -moz-linear-gradient(0deg, rgba(127, 183, 236,1) 0%, rgba(127, 183, 236,1) 25%, rgba(127, 183, 236,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(127, 183, 236,1) 0%, rgba(127, 183, 236,1) 25%, rgba(127, 183, 236,0) 100%);
+    background: linear-gradient(0deg, rgba(127, 183, 236,1) 0%, rgba(127, 183, 236,1) 25%, rgba(127, 183, 236,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7FB7EC",endColorstr="#7FB7EC",GradientType=1);
+  }
+  &.card-image-trikot--primary:after{
+    background: rgb(23, 54, 145);
+    background: -moz-linear-gradient(0deg, rgba(23, 54, 145,1) 0%, rgba(23, 54, 145,1) 25%, rgba(23, 54, 145,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(23, 54, 145,1) 0%, rgba(23, 54, 145,1) 25%, rgba(23, 54, 145,0) 100%);
+    background: linear-gradient(0deg, rgba(23, 54, 145,1) 0%, rgba(23, 54, 145,1) 25%, rgba(23, 54, 145,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#173691",endColorstr="#173691",GradientType=1);
+  }
+  &:after{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50%;
+    content: '';
+    background: rgb(244,244,244);
+    background: -moz-linear-gradient(0deg, rgba(244,244,244,1) 0%, rgba(244,244,244,1) 25%, rgba(244,244,244,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(244,244,244,1) 0%, rgba(244,244,244,1) 25%, rgba(244,244,244,0) 100%);
+    background: linear-gradient(0deg, rgba(244,244,244,1) 0%, rgba(244,244,244,1) 25%, rgba(244,244,244,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f4f4f4",endColorstr="#f4f4f4",GradientType=1);
+  }
+  >img{
+    width: var(--app-trikro-scale);
+    height: auto;
+  }
+}
+.card-rounded-trikot{
+  width: var(--app-trikot-rounded);
+  height: var(--app-trikot-rounded);
+  z-index: 2;
+}

@@ -1,0 +1,61 @@
+/* function
+-------------------------------------------------------------*/
+//replace string
+@function str-replace( $string, $search, $replace ) {
+	$index: str-index( $string, $search );
+	@if $index {
+		@return str-slice( $string, 1, $index - 1 ) + $replace + str_replace( str-slice( $string, $index + str-length( $search ) ), $search, $replace );
+	}
+	@return $string;
+}
+
+//svg color convert
+@function get-icon( $icon, $color: #fff ) {
+	@if 'color' != type-of( $color ) {
+		@warn 'The requested color - "' + $color + '" - was not recognized as a Sass color value.';
+		@return null;
+	}
+	@if map-has-key( $icons, $icon ) {
+		$icon:        map-get( $icons, $icon );
+		$placeholder: '%%COLOR%%';
+		$data-uri:    str-replace( url( $data-svg-prefix + $icon ), $placeholder, $color );
+		@return str-replace( $data-uri, '#', '%23' );
+	}
+	@warn 'The requested icon - "' + $icon + '" - is not defined in the $icons map.';
+	@return null;
+}
+
+@function get-icon-class() {
+	@return 'icon-' + map-get( $icons, $icon );
+}
+
+
+/* svg icons
+-------------------------------------------------------------*/
+$data-svg-prefix: 'data:image/svg+xml;utf-8,';
+$icons: (
+  'search':'<svg xmlns="http://www.w3.org/2000/svg" width="24.16" height="24.142" viewBox="0 0 24.16 24.142"><path d="M25.8,24.086l-4.479-4.443a10.866,10.866,0,1,0-1.678,1.678l4.443,4.443A1.2,1.2,0,1,0,25.8,24.086ZM12.87,21.321a8.451,8.451,0,1,1,8.451-8.451,8.451,8.451,0,0,1-8.451,8.451Z" transform="translate(-1.979 -1.979)" fill="%%COLOR%%"/></svg>',
+  'user':'<svg xmlns="http://www.w3.org/2000/svg" width="24.01" height="24.142" viewBox="0 0 24.01 24.142"><path d="M18.527,14.922a7.238,7.238,0,1,0-8.952,0,12.064,12.064,0,0,0-7.5,9.868,1.214,1.214,0,1,0,2.413.265,9.651,9.651,0,0,1,19.182,0,1.206,1.206,0,0,0,1.206,1.074h.133A1.206,1.206,0,0,0,26.067,24.8a12.064,12.064,0,0,0-7.54-9.88Zm-4.476-.857A4.826,4.826,0,1,1,18.877,9.24,4.826,4.826,0,0,1,14.051,14.065Z" transform="translate(-2.064 -1.995)" fill="%%COLOR%%"/></svg>',
+  'burger':'<svg xmlns="http://www.w3.org/2000/svg" width="44" height="31" viewBox="0 0 44 31"><g transform="translate(-1772 -43)"><rect width="44" height="3" transform="translate(1772 43)" fill="#fff"/><rect width="44" height="3" transform="translate(1772 57)" fill="#fff"/><rect width="44" height="3" transform="translate(1772 71)" fill="%%COLOR%%"/></g></svg>',
+	'angle-down': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z" fill="%%COLOR%%"/></svg>',
+	'soccer-field-v': '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="137.505" height="220" viewBox="0 0 137.505 220"><defs><clipPath id="a"><path d="M531,324h33.064v40.123H531Z" transform="translate(-531 -324)" fill="#fff"/></clipPath><clipPath id="b"><path d="M139.21,324H177.2v48.313H139.21Z" transform="translate(-139.21 -324)" fill="#fff"/></clipPath><clipPath id="c"><path d="M139.21,228H244.188V365.5H139.21Z" transform="translate(-139.21 -228)" fill="#fff"/></clipPath><clipPath id="d"><path d="M383,228H487.019V365.5H383Z" transform="translate(-380.271 -228)" fill="#fff"/></clipPath></defs><g transform="translate(365.505 -139.21) rotate(90)"><path d="M365,352a13,13,0,1,1-13-13,13,13,0,0,1,13,13" transform="translate(-102.981 -55.251)" fill="#fff"/><g transform="translate(326.146 276.639)" clip-path="url(#a)"><path d="M531.39,344.181a19.905,19.905,0,0,0,6.48,14.264,21.863,21.863,0,0,0,15.146,5.721h11.277V324.2H553.017a21.857,21.857,0,0,0-15.146,5.721,19.9,19.9,0,0,0-6.48,14.263Z" transform="translate(-531.232 -324.119)" fill="#fff"/></g><g transform="translate(139.21 272.596)" clip-path="url(#b)"><path d="M172.111,344.294a20.061,20.061,0,0,0-6.479-14.343,21.782,21.782,0,0,0-15.144-5.753H139.212v40.193h11.276a21.79,21.79,0,0,0,15.144-5.753,20.067,20.067,0,0,0,6.479-14.344Z" transform="translate(-139.211 -320.069)" fill="#fff"/></g><g transform="translate(139.21 228)" clip-path="url(#c)"><path d="M225.145,296.757a24.063,24.063,0,0,1,20.625-23.786V228.008H156.4A17.186,17.186,0,0,0,139.208,245.2v20.625l12.96,0a30.938,30.938,0,0,1,0,61.875h-12.96v20.625A17.186,17.186,0,0,0,156.4,365.507H245.77V320.545a24.063,24.063,0,0,1-20.625-23.788Z" transform="translate(-139.209 -228.004)" fill="#fff"/></g><g transform="translate(252.461 228)" clip-path="url(#d)"><path d="M472.774,228.01H383.4v44.963a24.062,24.062,0,0,1,0,47.574V365.51h89.374a17.186,17.186,0,0,0,17.188-17.188V327.7H477a30.938,30.938,0,0,1,0-61.875h12.96V245.2a17.186,17.186,0,0,0-17.188-17.188Z" transform="translate(-383.214 -228.005)" fill="#fff"/></g></g></svg>',
+	'soccer-field-h':'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="220" height="137.505" viewBox="0 0 220 137.505"><defs><clipPath id="a"><path d="M531,324h33.064v40.123H531Z" transform="translate(-531 -324)" fill="#fff"/></clipPath><clipPath id="b"><path d="M139.21,324H177.2v48.313H139.21Z" transform="translate(-139.21 -324)" fill="#fff"/></clipPath><clipPath id="c"><path d="M139.21,228H244.188V365.5H139.21Z" transform="translate(-139.21 -228)" fill="#fff"/></clipPath><clipPath id="d"><path d="M383,228H487.019V365.5H383Z" transform="translate(-380.271 -228)" fill="#fff"/></clipPath></defs><g transform="translate(-139.21 -228)"><path d="M365,352a13,13,0,1,1-13-13,13,13,0,0,1,13,13" transform="translate(-102.981 -55.251)" fill="#fff"/><g transform="translate(326.146 276.639)" clip-path="url(#a)"><path d="M531.39,344.181a19.905,19.905,0,0,0,6.48,14.264,21.863,21.863,0,0,0,15.146,5.721h11.277V324.2H553.017a21.857,21.857,0,0,0-15.146,5.721,19.9,19.9,0,0,0-6.48,14.263Z" transform="translate(-531.232 -324.119)" fill="#fff"/></g><g transform="translate(139.21 272.596)" clip-path="url(#b)"><path d="M172.111,344.294a20.061,20.061,0,0,0-6.479-14.343,21.782,21.782,0,0,0-15.144-5.753H139.212v40.193h11.276a21.79,21.79,0,0,0,15.144-5.753,20.067,20.067,0,0,0,6.479-14.344Z" transform="translate(-139.211 -320.069)" fill="#fff"/></g><g transform="translate(139.21 228)" clip-path="url(#c)"><path d="M225.145,296.757a24.063,24.063,0,0,1,20.625-23.786V228.008H156.4A17.186,17.186,0,0,0,139.208,245.2v20.625l12.96,0a30.938,30.938,0,0,1,0,61.875h-12.96v20.625A17.186,17.186,0,0,0,156.4,365.507H245.77V320.545a24.063,24.063,0,0,1-20.625-23.788Z" transform="translate(-139.209 -228.004)" fill="#fff"/></g><g transform="translate(252.461 228)" clip-path="url(#d)"><path d="M472.774,228.01H383.4v44.963a24.062,24.062,0,0,1,0,47.574V365.51h89.374a17.186,17.186,0,0,0,17.188-17.188V327.7H477a30.938,30.938,0,0,1,0-61.875h12.96V245.2a17.186,17.186,0,0,0-17.188-17.188Z" transform="translate(-383.214 -228.005)" fill="#fff"/></g></g></svg>'
+);
+
+// fill="%%COLOR%%"
+// get-icon('name', #color)
+
+.tsv-solid{
+	width: 24px;
+	height: 24px;
+	background-position: center center;
+	background-repeat: repeat;
+	display: inline-block;
+	background-size: 100% 100%;
+}
+.tsv-soccer-field-h{
+	background-image: get-icon('soccer-field-h', #fff);
+}
+.tsv-soccer-field-v{
+	background-image: get-icon('soccer-field-v', #fff);
+}

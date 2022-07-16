@@ -1,0 +1,30 @@
+//vendor imports
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@mixin borderRadius($r: 50%) {
+	-webkit-border-radius: $r;
+	-moz-border-radius: $r;
+	border-radius: $r;
+}
+@mixin backgroundImgCover($p: center center) {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: $p;
+	background-repeat: no-repeat;
+}
+@mixin boxShadow($s: 0 2px 4px, $c: rgba(0, 0, 0, 0.25)) {
+	-webkit-box-shadow: $s $c;
+	-moz-box-shadow: $s $c;
+	-o-box-shadow: $s $c;
+	box-shadow: $s $c;
+}
+
+@import 'vars';
+@import 'fonts';
+@import 'icons';
+@import 'reboot';
+@import "header";
+@import "footer";
+@import "modules";
